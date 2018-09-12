@@ -1,9 +1,14 @@
 package com.javasampleapproach.rabbitmq;
 
-import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import java.net.URISyntaxException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import com.rabbitmq.client.ConnectionFactory;
 
 @SpringBootApplication
 public class SpringRabbitMqPublisherApplication {
@@ -13,14 +18,9 @@ public class SpringRabbitMqPublisherApplication {
 	}
 	
 	@Bean
-    public CachingConnectionFactory connectionFactory() {
-        CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
-        //connectionFactory.setUri("amqp://juagomez:vinula@localhost:5672");
-    	//*******RabbitMQ-DEV
-        //connectionFactory.setUri("amqps://admin:SNMYSCACWOLMHZHS@portal-ssl1233-20.bmix-dal-yp-eccd01e7-4f3d-4c90-bc67-220feeeb8e46.2126222060.composedb.com:54907/bmix-dal-yp-eccd01e7-4f3d-4c90-bc67-220feeeb8e46");
+    public ConnectionFactory connectionFactory() throws KeyManagementException, NoSuchAlgorithmException, URISyntaxException {
+		ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setUri("amqp://kqeniqmj:9IX8D-nhTOJRQo643vNuHeJwvwdb-NYw@fly.rmq.cloudamqp.com/kqeniqmj");
-        //connectionFactory.setChannelCacheSize(100);
         return connectionFactory;
     }
-
 }
