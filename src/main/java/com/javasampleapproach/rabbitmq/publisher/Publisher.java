@@ -17,7 +17,7 @@ public class Publisher {
 	private String exchange;
 	
 	public void produceMsg(String msg){
-		rabbitTemplate.convertAndSend(exchange, "",msg);
+		rabbitTemplate.convertAndSend(exchange, "test",msg);
 		System.out.println("Send msg = " + msg);
 	}
 }
